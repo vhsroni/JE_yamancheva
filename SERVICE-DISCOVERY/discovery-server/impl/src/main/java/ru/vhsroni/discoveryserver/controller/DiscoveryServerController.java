@@ -3,6 +3,7 @@ package ru.vhsroni.discoveryserver.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
 import ru.vhsroni.discoveryserver.api.DiscoveryServerApi;
 import ru.vhsroni.discoveryserver.service.DiscoveryRegistry;
 import ru.vhsroni.discoveryserver.domain.ServiceInstance;
@@ -12,6 +13,7 @@ import ru.vhsroni.discoveryserver.dto.response.ServiceInstanceResponse;
 
 import java.util.Optional;
 
+@RestController
 @RequiredArgsConstructor
 public class DiscoveryServerController implements DiscoveryServerApi {
 

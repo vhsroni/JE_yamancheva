@@ -4,6 +4,7 @@ plugins {
 
 ext {
     lombokVersion = '1.18.38'
+    openapiVersion = '2.8.6'
 }
 
 dependencies {
@@ -11,6 +12,8 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${openapiVersion}"
+
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
 }

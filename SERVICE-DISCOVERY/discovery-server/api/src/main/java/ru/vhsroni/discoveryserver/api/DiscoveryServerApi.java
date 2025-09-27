@@ -43,7 +43,7 @@ public interface DiscoveryServerApi {
             )
             @Valid @RequestBody ServiceInstanceRequest request,
             @Parameter(hidden = true)
-            @RequestHeader(value = "X-Forwarded-For") String forwardedFor,
+            @RequestHeader(value = "X-Forwarded-For", required = false) String forwardedFor,
             @Parameter(hidden = true)
             HttpServletRequest httpRequest
     );
