@@ -1,0 +1,24 @@
+plugins {
+    id 'org.springframework.boot'
+}
+
+ext {
+    lombokVersion = '1.18.38'
+}
+
+dependencies {
+    implementation project(":discovery-server:api")
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
+
+springBoot {
+    mainClass = 'ru.vhsroni.discoveryserver.DiscoveryServerApplication'
+}
+
+bootJar {
+    archiveFileName = 'discovery-server.jar'
+}

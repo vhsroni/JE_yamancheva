@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+}
+
+jar {
+    enabled = true
+}
+
+ext {
+    openapiVersion = '2.8.6'
+}
+
+dependencies {
+    implementation platform("org.springframework.boot:spring-boot-dependencies:3.4.5")
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:${openapiVersion}"
+    implementation 'jakarta.validation:jakarta.validation-api'
+}
