@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test;
 import ru.vhsroni.discoveryserver.domain.ServiceInstance;
 import ru.vhsroni.discoveryserver.service.impl.ListServiceRegistry;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class ListServiceRegistryTest {
 
     @Test
