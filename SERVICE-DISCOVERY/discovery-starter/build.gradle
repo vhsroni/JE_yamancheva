@@ -1,7 +1,13 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'maven-publish'
     id 'io.spring.dependency-management' version '1.1.7'
+}
+
+
+jar {
+    archiveBaseName = 'discovery-service-starter'
+    archiveVersion = '1.0.0'
 }
 
 dependencyManagement {
@@ -10,39 +16,74 @@ dependencyManagement {
     }
 }
 
-group = 'com.example'
+group = 'ru.vhsroni'
 version = '1.0.0'
 
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
+    withSourcesJar()
 }
 
 repositories {
     mavenCentral()
-    mavenLocal()
-}
-
-ext {
-    lombokVersion = '1.18.38'
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-autoconfigure'
-    implementation 'org.springframework.boot:spring-boot-starter-webflux'
-    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure:3.4.5'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux:3.4.5'
+    implementation 'org.springframework:spring-context:6.2.0'
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    compileOnly "org.projectlombok:lombok:${lombokVersion}"
-    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:3.4.5'
 
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.4.5'
+    compileOnly 'org.projectlombok:lombok:1.18.38'
+    annotationProcessor 'org.projectlombok:lombok:1.18.38'
 }
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
+            artifactId = 'discovery-service-starter'
+
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+
+            pom {
+                name = 'User Service Starter'
+                description = 'Spring Boot Starter for User Service'
+
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'vhsroni'
+                        name = 'veronika'
+                    }
+                }
+
+                properties = [
+                        'maven.compiler.source': '21',
+                        'maven.compiler.target': '21'
+                ]
+            }
         }
+    }
+
+    repositories {
+        mavenLocal()
     }
 }
