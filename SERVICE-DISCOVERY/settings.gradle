@@ -1,7 +1,0 @@
-rootProject.name = 'SERVICE-DISCOVERY'
-include 'discovery-server'
-include 'discovery-server:api'
-findProject(':discovery-server:api')?.name = 'api'
-include 'discovery-server:impl'
-findProject(':discovery-server:impl')?.name = 'impl'
-
