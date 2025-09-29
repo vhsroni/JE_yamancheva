@@ -20,7 +20,6 @@ public class ListServiceRegistry implements ServiceRegistry {
         if (!instances.contains(instance)) {
             instances.add(instance);
         } else {
-            // обновляем статус/heartbeat, если уже есть
             instances.stream()
                     .filter(i -> i.equals(instance))
                     .forEach(i -> i.setLastHeartbeat(instance.getLastHeartbeat()));

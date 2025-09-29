@@ -19,9 +19,14 @@ repositories {
     mavenLocal()
 }
 
+ext {
+    lombokVersion = '1.18.38'
+}
+
 dependencies {
     implementation 'ru.vhsroni:discovery-service-starter:1.0.0'
-
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'

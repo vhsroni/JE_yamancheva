@@ -1,6 +1,5 @@
 package ru.vhsroni.discoveryserver.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

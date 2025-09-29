@@ -18,8 +18,7 @@ public class CallController {
 
     @GetMapping("/call-user")
     public Mono<String> callUser() {
-        String instance = discoveryClient.getInstance("user-service");
-        String base = "http://" + instance;
-        return webClient.get().uri(instance + "/hello").retrieve().bodyToMono(String.class);
+        String instanceBaseUrl = discoveryClient.getInstance("user-service");
+        return webClient.get().uri(instanceBaseUrl + "/hello").retrieve().bodyToMono(String.class);
     }
 }

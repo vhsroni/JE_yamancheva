@@ -9,7 +9,6 @@ import ru.vhsroni.discoveryserver.service.DiscoveryRegistry;
 import ru.vhsroni.discoveryserver.domain.ServiceInstance;
 import ru.vhsroni.discoveryserver.dto.request.ServiceInstanceRequest;
 import ru.vhsroni.discoveryserver.dto.response.RegisterResponse;
-import ru.vhsroni.discoveryserver.dto.response.ServiceInstanceResponse;
 
 import java.util.Optional;
 

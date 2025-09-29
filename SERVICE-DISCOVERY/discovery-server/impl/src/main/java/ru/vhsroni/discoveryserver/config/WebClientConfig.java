@@ -9,6 +9,8 @@ public class WebClientConfig {
 
     @Bean
     public WebClient webClient() {
-        return WebClient.builder().baseUrl("").build();
+        return WebClient.builder()
+                .baseUrl("")
+                .build();
     }
 }

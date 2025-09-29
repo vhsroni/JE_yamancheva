@@ -9,9 +9,9 @@ public interface DiscoveryRegistry {
 
     void register(ServiceInstance instance);
 
-    public Optional<ServiceInstance> discover(String serviceName);
+    Optional<ServiceInstance> discover(String serviceName);
 
-    public void cleanup();
+    void cleanup();
 
     ConcurrentHashMap<String, ServiceRegistry> getAll();
 }

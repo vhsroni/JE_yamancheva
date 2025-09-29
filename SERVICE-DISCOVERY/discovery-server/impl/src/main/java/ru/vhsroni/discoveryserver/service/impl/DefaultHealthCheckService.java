@@ -26,7 +26,7 @@ public class DefaultHealthCheckService implements HealthCheckService {
     @Override
     @Scheduled(fixedRate = 10_000)
     public void checkServices() {
-        log.info("health-check-service begin");
+        log.debug("health-check begin");
 
         List<Mono<Void>> healthChecks = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class DefaultHealthCheckService implements HealthCheckService {
         Mono.when(healthChecks)
                 .doOnTerminate(() -> {
                     discoveryRegistry.cleanup();
-                    log.info("health-check-service completed");
+                    log.debug("health-check completed");
                 })
                 .subscribe();
     }
