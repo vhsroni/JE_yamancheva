@@ -1,6 +1,6 @@
 discovery:
   server-url: http://localhost:8080
-  service-name: call-service
+  service-name: user-service
   service-port: ${SERVER_PORT}
 
 server:

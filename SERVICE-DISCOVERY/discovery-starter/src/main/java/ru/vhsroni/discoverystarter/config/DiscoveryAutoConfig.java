@@ -8,8 +8,10 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
-import ru.vhsroni.discoverystarter.client.DiscoveryClient;
+import ru.vhsroni.discoverystarter.controller.HealthController;
+import ru.vhsroni.discoverystarter.service.DiscoveryClient;
 import ru.vhsroni.discoverystarter.properties.DiscoveryProperties;
+import ru.vhsroni.discoverystarter.service.ServiceRegister;
 
 @Configuration
 @EnableConfigurationProperties(DiscoveryProperties.class)
@@ -41,5 +43,17 @@ public class DiscoveryAutoConfig {
     public void init() {
         log.info("Discovery starter configured for service: {}:{}",
                 properties.getServiceName(), properties.getServicePort());
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(ServiceRegister.class)
+    public ServiceRegister serviceRegister(DiscoveryClient discoveryClient, DiscoveryProperties discoveryProperties) {
+        return new ServiceRegister(discoveryClient, discoveryProperties);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(HealthController.class)
+    public HealthController healthController() {
+        return new HealthController();
     }
 }

@@ -28,9 +28,9 @@ public class DiscoveryServerController implements DiscoveryServerApi {
     }
 
     @Override
-    public ResponseEntity<ServiceInstanceResponse> discoverService(String serviceName) {
+    public ResponseEntity<String> discoverService(String serviceName) {
         Optional<ServiceInstance> instance = discoveryRegistry.discover(serviceName);
-        return instance.map(i -> ResponseEntity.ok(new ServiceInstanceResponse(i.getInstanceUrl())))
+        return instance.map(i -> ResponseEntity.ok(i.getInstanceUrl()))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

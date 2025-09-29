@@ -63,7 +63,7 @@ public interface DiscoveryServerApi {
             content = @Content(schema = @Schema(hidden = true))
     )
     @GetMapping("/discover/{serviceName}")
-    ResponseEntity<ServiceInstanceResponse> discoverService(
+    ResponseEntity<String> discoverService(
             @Parameter(
                     description = "The logical name of the service being requested",
                     required = true,

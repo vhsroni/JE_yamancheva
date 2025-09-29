@@ -1,4 +1,4 @@
-package ru.vhsroni.discoveryserver.config;
+package ru.vhsroni.callservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +9,6 @@ public class WebClientConfig {
 
     @Bean
     public WebClient webClient() {
-        return WebClient.builder().baseUrl("").build();
+        return WebClient.builder().build();
     }
 }

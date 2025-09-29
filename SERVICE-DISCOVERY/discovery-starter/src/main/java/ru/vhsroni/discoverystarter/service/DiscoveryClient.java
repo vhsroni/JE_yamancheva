@@ -1,4 +1,4 @@
-package ru.vhsroni.discoverystarter.client;
+package ru.vhsroni.discoverystarter.service;
 
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -13,7 +13,7 @@ public class DiscoveryClient {
 
     public String getInstance(String serviceName) {
         return webClient.get()
-                .uri("/discover/{serviceName}", serviceName)
+                .uri("/api/v1/discovery/discover/{serviceName}", serviceName)
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
@@ -22,13 +22,13 @@ public class DiscoveryClient {
     public void register(String serviceName, int servicePort) {
         RegistrationRequest body = new RegistrationRequest(serviceName, servicePort);
         webClient.post()
-                .uri("/register")
+                .uri("/api/v1/discovery/register")
                 .bodyValue(body)
                 .retrieve()
                 .toBodilessEntity()
                 .block();
     }
 
-    public record RegistrationRequest(String serviceName, int servicePort) {}
+    public record RegistrationRequest(String serviceName, int port) {}
 }
 
